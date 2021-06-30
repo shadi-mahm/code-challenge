@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{19E7CE4D-3ACA-4A91-B9DC-B983C7BEF106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCanPhone.Client", "src\Client\TinCanPhone.Client.csproj", "{530364E1-14F6-459A-BDCF-8A2D462F83E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCanPhone.Client", "src\Client\TinCanPhone.Client.csproj", "{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,20 +20,20 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Debug|x64.Build.0 = Debug|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Debug|x86.Build.0 = Debug|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Release|x64.ActiveCfg = Release|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Release|x64.Build.0 = Release|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Release|x86.ActiveCfg = Release|Any CPU
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0}.Release|x86.Build.0 = Release|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Debug|x64.Build.0 = Debug|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Debug|x86.Build.0 = Debug|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Release|x64.ActiveCfg = Release|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Release|x64.Build.0 = Release|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Release|x86.ActiveCfg = Release|Any CPU
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{530364E1-14F6-459A-BDCF-8A2D462F83E0} = {19E7CE4D-3ACA-4A91-B9DC-B983C7BEF106}
+		{6C044EE5-A3C8-4DD1-B1B2-E918C4FB854E} = {19E7CE4D-3ACA-4A91-B9DC-B983C7BEF106}
 	EndGlobalSection
 EndGlobal
