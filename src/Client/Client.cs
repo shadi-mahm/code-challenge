@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Grpc.Core;
 using Grpc.Net.Client;
 using TinCanPhone.Protos;
 
@@ -14,11 +15,24 @@ namespace TinCanPhone.Client
         public Client(Uri serviceAddress)
         {
             _channel = GrpcChannel.ForAddress(serviceAddress);
+
+            _client = new Receiver.ReceiverClient(_channel);
         }
 
-        public Task<string> SendAsync(string message)
+        public async Task<string> SendAsync(string message)
         {
-            throw new System.NotImplementedException();
+            var request = new RequestMessage { Message = message };
+
+            try
+            {
+                var result = await _client.HandleUnaryMessagesAsync(request);
+
+                return result.Response;
+            }
+            catch (RpcException ex)
+            {
+                throw new ClientException("Error occured while calling gRPC service.", ex);
+            }
         }
     }
 }
