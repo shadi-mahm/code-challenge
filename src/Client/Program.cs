@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TinCanPhone.Client.Contracts;
+using TinCanPhone.Client.Models;
 using TinCanPhone.Common;
 
 namespace TinCanPhone.Client

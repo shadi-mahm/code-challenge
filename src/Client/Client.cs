@@ -40,6 +40,7 @@ namespace TinCanPhone.Client
         public async Task<IResponseMessage> SendAsync(IRequestMessage request)
         {
             var result = await SendAsync<DefaultResponseMessage>(request);
+
             return result;
         }
 
