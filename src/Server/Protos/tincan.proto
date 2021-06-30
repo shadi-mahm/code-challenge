@@ -6,7 +6,7 @@ package tincan;
 
 service Receiver {
 
-  rpc HandleMessages (RequestMessage) returns (ResponseMessage);
+  rpc HandleUnaryMessages (RequestMessage) returns (ResponseMessage);
 }
 
 message RequestMessage {

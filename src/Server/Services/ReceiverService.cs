@@ -1,23 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
-using Microsoft.Extensions.Logging;
+using TinCanPhone.Server.Handlers;
 
 namespace TinCanPhone.Server
 {
     public class ReceiverService : Receiver.ReceiverBase
     {
-        private readonly ILogger<ReceiverService> _logger;
-        public ReceiverService(ILogger<ReceiverService> logger)
+        private readonly IEnumerable<IMessageHandler> _handlers;
+
+        public ReceiverService(IEnumerable<IMessageHandler> handlers)
         {
-            _logger = logger;
+            _handlers = handlers;
         }
-        
-        public override Task<ResponseMessage> HandleMessages(RequestMessage request, ServerCallContext context)
+
+        public override async Task<ResponseMessage> HandleUnaryMessages(RequestMessage request, ServerCallContext context)
         {
-            return Task.FromResult(new ResponseMessage
+            var trimmedMessage = request.Message?.Trim();
+
+            try
             {
-                Response = "Hello " + request.Message
-            });
+                var handler = _handlers.SingleOrDefault(a => a.CanHandle(trimmedMessage));
+
+                if (handler is not null)
+                {
+                    var result = await handler.Handle().ConfigureAwait(false);
+
+                    var responseMessage = new ResponseMessage { Response = result?.Response };
+
+                    return responseMessage;
+                }
+
+                throw new RpcException(new Status(StatusCode.InvalidArgument, "No proper handler was found."));
+            }
+            catch (InvalidOperationException)
+            {
+                throw new RpcException(new Status(StatusCode.Internal, "Internal error"));
+            }
         }
     }
 }
