@@ -6,7 +6,9 @@ namespace TinCanPhone.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Uri serviceAddress = new("http://localhost:5000");
+
+            var client = new Client(serviceAddress);
         }
     }
 }
