@@ -1,26 +1,24 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TinCanPhone.Common;
 using TinCanPhone.Server.Handlers;
 using Xunit;
 
 namespace TinCanPhone.Server.Tests.HandlerTests
 {
-    public class HelloHandlerTests
+    public class ByeHandlerTests
     {
-        private readonly IMessageHandler _helloHandler;
+        private readonly IMessageHandler _byeHandler;
 
-        public HelloHandlerTests()
+        public ByeHandlerTests()
         {
-            _helloHandler = new HelloHandler();
+            _byeHandler = new ByeHandler();
         }
 
         [Fact]
         public void CanHandle_NullArgument_ReturnsFalse()
         {
             //logic
-            var result = _helloHandler.CanHandle(null);
+            var result = _byeHandler.CanHandle(null);
 
             //assert
             Assert.False(result);
@@ -33,7 +31,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             var message = string.Empty;
 
             //logic
-            var result = _helloHandler.CanHandle(message);
+            var result = _byeHandler.CanHandle(message);
 
             //assert
             Assert.False(result);
@@ -46,7 +44,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             var message = "invalid message";
 
             //logic
-            var result = _helloHandler.CanHandle(message);
+            var result = _byeHandler.CanHandle(message);
 
             //assert
             Assert.False(result);
@@ -56,31 +54,27 @@ namespace TinCanPhone.Server.Tests.HandlerTests
         public void CanHandle_ValidArgument_ReturnsTrue()
         {
             //arrange
-            var message = Messages.Hello;
+            var message = Messages.Bye;
 
             //logic
-            var result = _helloHandler.CanHandle(message);
+            var result = _byeHandler.CanHandle(message);
 
             //assert
             Assert.True(result);
         }
 
         [Fact]
-        public async Task Handle_ReturnsResponseWithDelay()
+        public async Task Handle_ReturnsResponse()
         {
             //arrange
-            var stopWatch = new Stopwatch();
-            var response = "Hi";
+            var response = "Bye";
 
             //logic
-            stopWatch.Start();
-            var result = await _helloHandler.Handle();
-            var timeSpan = stopWatch.Elapsed;
+            var result = await _byeHandler.Handle();
 
             //assert
             Assert.NotNull(result);
             Assert.Equal(response, result.Response);
-            Assert.True(timeSpan >= TimeSpan.FromSeconds(1));
         }
     }
 }

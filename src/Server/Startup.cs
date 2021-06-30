@@ -13,8 +13,9 @@ namespace TinCanPhone.Server
         {
             services.AddGrpc();
 
-            // handler's behaviour is request agnostic, that's why it's registered singleton
+            //handler services aren't request context sensitive, that's why they're registered singleton
             services.AddSingleton<IMessageHandler, HelloHandler>();
+            services.AddSingleton<IMessageHandler, ByeHandler>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
