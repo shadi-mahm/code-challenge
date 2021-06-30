@@ -11,7 +11,7 @@ namespace TinCanPhone.Server
         {
             _logger = logger;
         }
-
+        
         public override Task<ResponseMessage> HandleMessages(RequestMessage request, ServerCallContext context)
         {
             return Task.FromResult(new ResponseMessage

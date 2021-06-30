@@ -1,7 +1,7 @@
 ﻿
 namespace TinCanPhone.Common
 {
-    public class Messages
+    public static class Messages
     {
         public const string Hello = "Hello";
         public const string Bye = "Bye";
