@@ -10,6 +10,13 @@
     <None Remove="Grpc.Tools" />
     <None Remove="Grpc.Net.Client" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="../Protos/tincan.proto" GrpcServices="Client">
+        <Link>Protos/tincan.proto</Link>
+    </Protobuf>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.17.3" />
     <PackageReference Include="Grpc.Tools" Version="2.38.1">
