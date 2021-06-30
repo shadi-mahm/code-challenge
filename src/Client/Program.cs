@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TinCanPhone.Client.Contracts;
+using TinCanPhone.Client.Models;
 using TinCanPhone.Common;
 
 namespace TinCanPhone.Client
@@ -20,6 +22,8 @@ q for quit");
             IClient client = new Client(serviceUri);
 
             await HandleUnaryCall(client).ConfigureAwait(false);
+
+            Console.WriteLine("Connection closed.");
         }
 
         /// <summary>
@@ -44,40 +48,77 @@ q for quit");
                 switch (character)
                 {
                     case 'h':
-                        inflightRequests.Add(WriteInConsoleAndSend(Messages.Hello));
+                        inflightRequests.Add(SendString(Messages.Hello, client));
                         break;
                     case 'p':
-                        inflightRequests.Add(WriteInConsoleAndSend(Messages.Ping));
+                        inflightRequests.Add(SendRequestMessage(Messages.Ping, client));
                         break;
                     case 'b':
-                        inflightRequests.Add(WriteInConsoleAndSend(Messages.Bye));
+                        inflightRequests.Add(SendCustomRequestMessage(Messages.Bye, client));
                         exit = true;
                         break;
                     case 'q':
                         exit = true;
-                        break;                  
+                        break;
                     default:
-                        inflightRequests.Add(WriteInConsoleAndSend("invalid message"));
+                        inflightRequests.Add(SendString("invalid message", client));
                         break;
                 }
             }
 
             await Task.WhenAll(inflightRequests).ConfigureAwait(false);
 
-            async Task WriteInConsoleAndSend(string message)
+        }
+
+        private static async Task SendString(string message, IClient client)
+        {
+            try
             {
-                try
-                {
-                    Console.WriteLine($"sending {message}...");
+                Console.WriteLine($"sending {message}...");
 
-                    var result = await client.SendAsync(message).ConfigureAwait(false);
+                var result = await client.SendAsync(message).ConfigureAwait(false);
 
-                    Console.WriteLine(result);
-                }
-                catch (ClientException ex)
-                {
-                    Console.WriteLine($"Client threw an exception: {ex.Message}");
-                }
+                Console.WriteLine(result);
+            }
+            catch (ClientException ex)
+            {
+                Console.WriteLine($"Client threw an exception: {ex.Message}");
+            }
+        }
+
+        private static async Task SendRequestMessage(string message, IClient client)
+        {
+            try
+            {
+                IRequestMessage requestMessage = new DefaultRequestMessage { Message = message };
+
+                Console.WriteLine($"sending {requestMessage.Message}...");
+
+                var result = await client.SendAsync(requestMessage).ConfigureAwait(false);
+
+                Console.WriteLine(result.Response);
+            }
+            catch (ClientException ex)
+            {
+                Console.WriteLine($"Client threw an exception: {ex.Message}");
+            }
+        }
+
+        private static async Task SendCustomRequestMessage(string message, IClient client)
+        {
+            try
+            {
+                IRequestMessage requestMessage = new DefaultRequestMessage { Message = message };
+
+                Console.WriteLine($"sending {requestMessage.Message}...");
+
+                var result = await client.SendAsync<ExtendedReponseMessage>(requestMessage).ConfigureAwait(false);
+
+                Console.WriteLine(result.Response);
+            }
+            catch (ClientException ex)
+            {
+                Console.WriteLine($"Client threw an exception: {ex.Message}");
             }
         }
     }

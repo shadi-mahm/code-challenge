@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Net.Client;
+using TinCanPhone.Client.Contracts;
+using TinCanPhone.Client.Models;
 using TinCanPhone.Protos;
 
 namespace TinCanPhone.Client
@@ -32,6 +34,35 @@ namespace TinCanPhone.Client
             catch (RpcException ex)
             {
                 throw new ClientException("Error occured while calling gRPC service.", ex);
+            }
+        }
+
+        public async Task<IResponseMessage> SendAsync(IRequestMessage request)
+        {
+            var result = await SendAsync<DefaultResponseMessage>(request);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Note: Method is not able to instantiate response message without new() as TResponseMessage constraint
+        /// </summary>
+        /// <typeparam name="TResponseMessage"></typeparam>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<TResponseMessage> SendAsync<TResponseMessage>(IRequestMessage request) where TResponseMessage : IResponseMessage, new()
+        {
+            try
+            {
+                var result = await SendAsync(request.Message);
+
+                TResponseMessage responseMessage = new() { Response = result };
+
+                return responseMessage;
+            }
+            catch
+            {
+                throw;
             }
         }
     }
