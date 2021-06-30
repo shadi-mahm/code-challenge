@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "TinCanPhone.Server";
+option csharp_namespace = "TinCanPhone.Protos";
 
 package tincan;
 

@@ -5,7 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos/tincan.proto" GrpcServices="Server">
+    <Protobuf Include="../Protos/tincan.proto" GrpcServices="Server">
+        <Link>Protos/tincan.proto</Link>
     </Protobuf>
   </ItemGroup>
 
