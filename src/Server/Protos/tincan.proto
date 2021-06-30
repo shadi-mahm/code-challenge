@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "TinCanPhone.Server";
+
+package tincan;
+
+service Receiver {
+
+  rpc HandleMessages (RequestMessage) returns (ResponseMessage);
+}
+
+message RequestMessage {
+  string message = 1;
+}
+
+message ResponseMessage {
+  string response = 1;
+}
