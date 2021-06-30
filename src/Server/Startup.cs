@@ -16,6 +16,7 @@ namespace TinCanPhone.Server
             //handler services aren't request context sensitive, that's why they're registered singleton
             services.AddSingleton<IMessageHandler, HelloHandler>();
             services.AddSingleton<IMessageHandler, ByeHandler>();
+            services.AddSingleton<IMessageHandler, PingHandler>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
