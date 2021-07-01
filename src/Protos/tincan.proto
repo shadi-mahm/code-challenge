@@ -7,6 +7,7 @@ package tincan;
 service Receiver {
 
   rpc HandleUnaryMessages (RequestMessage) returns (ResponseMessage);
+  rpc HandleBidirectionalMessages (stream RequestMessage) returns (stream ResponseMessage);
 }
 
 message RequestMessage {
