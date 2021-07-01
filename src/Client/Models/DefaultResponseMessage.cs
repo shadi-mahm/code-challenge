@@ -2,8 +2,8 @@
 
 namespace TinCanPhone.Client.Models
 {
-    public class DefaultResponseMessage : IResponseMessage
+    public record DefaultResponseMessage : IResponseMessage
     {
-        public string Response { get; set; }
+        public string Response { get; init; }
     }
 }

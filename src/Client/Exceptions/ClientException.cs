@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TinCanPhone.Client
+namespace TinCanPhone.Client.Exceptions
 {
     public class ClientException : ApplicationException
     {

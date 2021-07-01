@@ -3,18 +3,19 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Net.Client;
 using TinCanPhone.Client.Contracts;
+using TinCanPhone.Client.Exceptions;
 using TinCanPhone.Client.Models;
 using TinCanPhone.Protos;
 
 namespace TinCanPhone.Client
 {
-    public class Client : IClient
+    public class GrpcClient : IClient
     {
         private readonly GrpcChannel _channel;
 
         private readonly Receiver.ReceiverClient _client;
 
-        public Client(Uri serviceAddress)
+        public GrpcClient(Uri serviceAddress)
         {
             _channel = GrpcChannel.ForAddress(serviceAddress);
 
@@ -64,6 +65,13 @@ namespace TinCanPhone.Client
             {
                 throw;
             }
+        }
+
+        public AsyncDuplexStreamingCall<RequestMessage, ResponseMessage> GetBidirectionalCall()
+        {
+            var call = _client.HandleBidirectionalMessages();
+
+            return call;
         }
     }
 }

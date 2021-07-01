@@ -3,9 +3,9 @@ using TinCanPhone.Client.Contracts;
 
 namespace TinCanPhone.Client.Models
 {
-    public class ExtendedReponseMessage : IResponseMessage
+    public record ExtendedReponseMessage : IResponseMessage
     {
-        public string Response { get; set; }
-        public DateTimeOffset ResponseDateTime { get; set; } = DateTimeOffset.Now;
+        public string Response { get; init; }
+        public DateTimeOffset ResponseDateTime { get; init; } = DateTimeOffset.Now;
     }
 }
