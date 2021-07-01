@@ -19,7 +19,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
         [Fact]
         public void CanHandle_NullArgument_ReturnsFalse()
         {
-            //logic
+            //act
             var result = _helloHandler.CanHandle(null);
 
             //assert
@@ -32,7 +32,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             //arrange
             var message = string.Empty;
 
-            //logic
+            //act
             var result = _helloHandler.CanHandle(message);
 
             //assert
@@ -45,7 +45,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             //arrange
             var message = "invalid message";
 
-            //logic
+            //act
             var result = _helloHandler.CanHandle(message);
 
             //assert
@@ -58,7 +58,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             //arrange
             var message = Messages.Hello;
 
-            //logic
+            //act
             var result = _helloHandler.CanHandle(message);
 
             //assert
@@ -72,7 +72,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             var stopWatch = new Stopwatch();
             var response = "Hi";
 
-            //logic
+            //act
             stopWatch.Start();
             var result = await _helloHandler.Handle();
             var timeSpan = stopWatch.Elapsed;

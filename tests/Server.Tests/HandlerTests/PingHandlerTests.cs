@@ -17,7 +17,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
         [Fact]
         public void CanHandle_NullArgument_ReturnsFalse()
         {
-            //logic
+            //act
             var result = _pingHandler.CanHandle(null);
 
             //assert
@@ -30,7 +30,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             //arrange
             var message = string.Empty;
 
-            //logic
+            //act
             var result = _pingHandler.CanHandle(message);
 
             //assert
@@ -43,7 +43,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             //arrange
             var message = "invalid message";
 
-            //logic
+            //act
             var result = _pingHandler.CanHandle(message);
 
             //assert
@@ -56,7 +56,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             //arrange
             var message = Messages.Ping;
 
-            //logic
+            //act
             var result = _pingHandler.CanHandle(message);
 
             //assert
@@ -69,7 +69,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             //arrange
             var response = "Pong";
 
-            //logic
+            //act
             var result = await _pingHandler.Handle();
 
             //assert

@@ -25,7 +25,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
             //arange
             var message = "invalid message";
 
-            //logic
+            //act
             var handlers = _serviceProvider.GetServices<IMessageHandler>();
             var handler = handlers.SingleOrDefault(a => a.CanHandle(message));
 
@@ -39,7 +39,7 @@ namespace TinCanPhone.Server.Tests.HandlerTests
         [InlineData("Ping")]
         public void ValidMessage_ReturnsHandler(string input)
         {
-            //logic
+            //act
             var handlers = _serviceProvider.GetServices<IMessageHandler>();
             var handler = handlers.SingleOrDefault(a => a.CanHandle(input));
 
