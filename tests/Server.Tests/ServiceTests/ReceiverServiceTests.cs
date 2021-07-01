@@ -8,12 +8,12 @@ using Xunit;
 
 namespace TinCanPhone.Server.Tests.ServiceTests
 {
-    public class ReceiverServerTests
+    public class ReceiverServiceTests
     {
         private readonly IServiceCollection _serviceCollection;
         private readonly ServiceProvider _serviceProvider;
 
-        public ReceiverServerTests()
+        public ReceiverServiceTests()
         {
             _serviceCollection = new ServiceCollection();
             _serviceCollection.AddSingleton<IMessageHandler, HelloHandler>();
