@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TinCanPhone.Client;
 using TinCanPhone.Client.Contracts;
 using TinCanPhone.Client.Models;
 using TinCanPhone.Common;
 
-namespace TinCanPhone.Client
+namespace TinCanPhone.ClientRunner
 {
     class Program
     {
@@ -19,7 +20,7 @@ q for quit");
 
             Uri serviceUri = new("http://localhost:5000");
 
-            IClient client = new Client(serviceUri);
+            IClient client = new Client.Client(serviceUri);
 
             await HandleUnaryCall(client).ConfigureAwait(false);
 
