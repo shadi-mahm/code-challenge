@@ -50,5 +50,57 @@ namespace TinCanPhone.Server
                 throw new RpcException(new Status(StatusCode.Internal, "Internal error"));
             }
         }
+
+        /// <summary>
+        /// According to https://docs.microsoft.com/en-us/aspnet/core/grpc/performance?view=aspnetcore-5.0#streaming logic
+        /// is required to restart stream if there is an error, but I'm not able to do so right now hence it writes error
+        /// instead of throwing exception.
+        /// </summary>
+        /// <remarks>
+        /// Inspired by https://docs.microsoft.com/en-us/aspnet/core/grpc/services?view=aspnetcore-5.0#bi-directional-streaming-method
+        /// </remarks>
+        /// <param name="requestStream"></param>
+        /// <param name="responseStream"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public override async Task HandleBidirectionalMessages(IAsyncStreamReader<RequestMessage> requestStream, IServerStreamWriter<ResponseMessage> responseStream, ServerCallContext context)
+        {
+            _logger.LogInformation("HandleBidirectionalMessages: Stream started...");
+
+            await foreach (var item in requestStream.ReadAllAsync())
+            {
+                var trimmedMessage = item.Message?.Trim();
+
+                try
+                {
+                    var handler = _handlers.SingleOrDefault(a => a.CanHandle(trimmedMessage));
+
+                    if (handler is not null)
+                    {
+                        var result = await handler.Handle().ConfigureAwait(false);
+
+                        var responseMessage = new ResponseMessage { Response = result?.Response };
+
+                        _logger.LogInformation($"HandleBidirectionalMessages: request: {item} - response: {responseMessage}");
+
+                        await responseStream.WriteAsync(responseMessage);
+                    }
+                    else
+                    {
+                        _logger.LogError($"HandleBidirectionalMessages: Handler not found for request: {item}");
+
+                        await responseStream.WriteAsync(new ResponseMessage { Response = "invalid command" });
+                    }
+                }
+                catch (InvalidOperationException ex)
+                {
+                    _logger.LogError(ex, "HandleBidirectionalMessages: There's an exception while finding a handler.");
+
+                    await responseStream.WriteAsync(new ResponseMessage { Response = "internal error" });
+                }
+            }
+
+            _logger.LogInformation("HandleBidirectionalMessages: Stream closed.");
+        }
     }
 }
