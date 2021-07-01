@@ -2,6 +2,6 @@
 {
     public interface IResponseMessage
     {
-        string Response { get; set; }
+        string Response { get; init; }
     }
 }

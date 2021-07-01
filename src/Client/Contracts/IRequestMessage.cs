@@ -2,6 +2,6 @@
 {
     public interface IRequestMessage
     {
-        string Message { get; set; }
+        string Message { get; init; }
     }
 }

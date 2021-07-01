@@ -2,8 +2,8 @@
 
 namespace TinCanPhone.Client.Models
 {
-    public class DefaultRequestMessage : IRequestMessage
+    public record DefaultRequestMessage : IRequestMessage
     {
-        public string Message { get; set; }
+        public string Message { get; init; }
     }
 }

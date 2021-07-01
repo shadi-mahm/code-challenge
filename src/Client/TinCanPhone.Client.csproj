@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyVersion>1.1.1</AssemblyVersion>
+		<AssemblyVersion>1.2.0</AssemblyVersion>
 	</PropertyGroup>
 	<ItemGroup>
 		<Protobuf Include="../Protos/tincan.proto" GrpcServices="Client">
@@ -15,10 +15,12 @@
 		<None Remove="Google.Protobuf" />
 		<None Remove="Grpc.Tools" />
 		<None Remove="Grpc.Net.Client" />
+		<None Remove="Exceptions\" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Contracts\" />
 		<Folder Include="Models\" />
+		<Folder Include="Exceptions\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Google.Protobuf" Version="3.17.3" />
