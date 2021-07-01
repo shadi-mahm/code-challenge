@@ -35,7 +35,7 @@ namespace TinCanPhone.Server.Tests
         protected override CancellationToken CancellationTokenCore => _cancellationToken;
         protected override Metadata ResponseTrailersCore => _responseTrailers;
         protected override Status StatusCore { get; set; }
-        protected override WriteOptions? WriteOptionsCore { get => _writeOptions; set { _writeOptions = value; } }
+        protected override WriteOptions WriteOptionsCore { get => _writeOptions; set { _writeOptions = value; } }
         protected override AuthContext AuthContextCore => _authContext;
 
         protected override ContextPropagationToken CreatePropagationTokenCore(ContextPropagationOptions options)
