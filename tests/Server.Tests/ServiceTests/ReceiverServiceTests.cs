@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Grpc.Core;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging.Abstractions;
 using TinCanPhone.Common;
 using TinCanPhone.Protos;
 using TinCanPhone.Server.Handlers;
@@ -25,7 +26,7 @@ namespace TinCanPhone.Server.Tests.ServiceTests
         {
             //arrange
             var handlers = _serviceProvider.GetServices<IMessageHandler>();
-            var service = new ReceiverService(handlers);
+            var service = new ReceiverService(handlers, NullLogger<ReceiverService>.Instance);
             var expectedResponse = "Hi";
 
             //act
@@ -41,7 +42,7 @@ namespace TinCanPhone.Server.Tests.ServiceTests
         {
             //arrange
             var handlers = _serviceProvider.GetServices<IMessageHandler>();
-            var service = new ReceiverService(handlers);
+            var service = new ReceiverService(handlers, NullLogger<ReceiverService>.Instance);
 
             //assert
             await Assert.ThrowsAsync<RpcException>(() =>
@@ -60,7 +61,7 @@ namespace TinCanPhone.Server.Tests.ServiceTests
             ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 
             var handlers = serviceProvider.GetServices<IMessageHandler>();
-            var service = new ReceiverService(handlers);
+            var service = new ReceiverService(handlers, NullLogger<ReceiverService>.Instance);
 
             //assert
             await Assert.ThrowsAsync<RpcException>(() =>
