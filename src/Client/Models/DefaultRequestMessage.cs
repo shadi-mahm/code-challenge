@@ -1,4 +1,4 @@
-﻿using TinCanPhone.Client.Contracts;
+﻿using TinCanPhone.Common.Contracts;
 
 namespace TinCanPhone.Client.Models
 {

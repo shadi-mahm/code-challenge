@@ -10,7 +10,6 @@
 		</Protobuf>
 	</ItemGroup>
 	<ItemGroup>
-		<None Remove="Contracts\" />
 		<None Remove="Models\" />
 		<None Remove="Google.Protobuf" />
 		<None Remove="Grpc.Tools" />
@@ -18,7 +17,6 @@
 		<None Remove="Exceptions\" />
 	</ItemGroup>
 	<ItemGroup>
-		<Folder Include="Contracts\" />
 		<Folder Include="Models\" />
 		<Folder Include="Exceptions\" />
 	</ItemGroup>
@@ -29,5 +27,8 @@
 	    <PrivateAssets>all</PrivateAssets>
 	  </PackageReference>
 	  <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Common\TinCanPhone.Common.csproj" />
 	</ItemGroup>
 </Project>

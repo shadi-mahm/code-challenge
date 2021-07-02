@@ -1,4 +1,4 @@
-﻿namespace TinCanPhone.Client.Contracts
+﻿namespace TinCanPhone.Common.Contracts
 {
     public interface IRequestMessage
     {

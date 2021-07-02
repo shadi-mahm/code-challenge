@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Grpc.Core;
 using TinCanPhone.Client;
-using TinCanPhone.Client.Contracts;
+using TinCanPhone.Common.Contracts;
 using TinCanPhone.Client.Exceptions;
 using TinCanPhone.Client.Models;
 using TinCanPhone.Common;
@@ -17,6 +17,8 @@ namespace TinCanPhone.ClientRunner
         {
             var selectedChannel = SelectCommunicationChannel();
 
+            // as HTTP/2 over TLS is not supported on macOS due to missing ALPN support, server runs on http.
+            //If you run the application on Windows you can change 'server' protocol to https and nothing will be broken
             Uri serviceUri = new("http://localhost:5000");
 
             GrpcClient client = new(serviceUri);
