@@ -52,12 +52,12 @@ namespace TinCanPhone.Server
         }
 
         /// <summary>
-        /// According to https://docs.microsoft.com/en-us/aspnet/core/grpc/performance?view=aspnetcore-5.0#streaming logic
-        /// is required to restart stream if there is an error, but I'm not able to do so right now hence it writes error
-        /// instead of throwing exception.
+        ///     According to https://docs.microsoft.com/en-us/aspnet/core/grpc/performance?view=aspnetcore-5.0#streaming logic
+        ///     is required to restart stream if there is an error, but I'm not able to do so right now hence it writes error
+        ///     instead of throwing exception.
         /// </summary>
         /// <remarks>
-        /// Inspired by https://docs.microsoft.com/en-us/aspnet/core/grpc/services?view=aspnetcore-5.0#bi-directional-streaming-method
+        ///     Inspired by https://docs.microsoft.com/en-us/aspnet/core/grpc/services?view=aspnetcore-5.0#bi-directional-streaming-method
         /// </remarks>
         /// <param name="requestStream"></param>
         /// <param name="responseStream"></param>
