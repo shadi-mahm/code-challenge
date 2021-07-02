@@ -4,10 +4,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Grpc.Core;
 
-namespace TinCanPhone.Server.Tests
+namespace TinCanPhone.Server.Tests.Helpers
 {
     /// <summary>
-    /// Copied from gRPC examples: https://github.com/grpc/grpc-dotnet/blob/master/examples/Tester/Tests/UnitTests/Helpers/TestServerCallContext.cs
+    ///     Copied from grpc-dotnet by James Newton-King: https://github.com/grpc/grpc-dotnet/blob/master/examples/Tester/Tests/UnitTests/Helpers/TestServerCallContext.cs
     /// </summary>
     public class MockServerCallContext : ServerCallContext
     {
