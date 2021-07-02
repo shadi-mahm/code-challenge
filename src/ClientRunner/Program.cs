@@ -13,30 +13,34 @@ namespace TinCanPhone.ClientRunner
 {
     class Program
     {
-        private const bool UseUnary = true;
-
         static async Task Main(string[] args)
         {
-            Console.WriteLine(@"Press:
-h for ""Hello"" message
-p for ""Ping"" message
-b for ""Bye"" message
-q for quit");
+            var selectedChannel = SelectCommunicationChannel();
 
             Uri serviceUri = new("http://localhost:5000");
 
             GrpcClient client = new(serviceUri);
 
-            if (UseUnary)
+            if (selectedChannel is CommunicationChannel.Unary)
             {
+                Console.WriteLine("Unary method is selected.");
+
+                PrintHelp();
                 await HandleUnaryCall(client).ConfigureAwait(false);
+                Console.WriteLine("Connection closed.");
+            }
+            else if (selectedChannel is CommunicationChannel.Bidirectional)
+            {
+                Console.WriteLine("Bidirectional method is selected.");
+
+                PrintHelp();
+                await HandleBidirectionalCall(client).ConfigureAwait(false);
+                Console.WriteLine("Connection closed.");
             }
             else
             {
-                await HandleBidirectionalCall(client).ConfigureAwait(false);
+                Console.WriteLine("Invalid channel.");
             }
-
-            Console.WriteLine("Connection closed.");
         }
 
         /// <summary>
@@ -58,6 +62,7 @@ q for quit");
                 var keyInfo = Console.ReadKey(true);
                 var character = keyInfo.KeyChar;
 
+                // all 3 different implementations of SendAsync are used to show they're doing the job well.
                 switch (character)
                 {
                     case 'h':
@@ -137,6 +142,10 @@ q for quit");
         /// <summary>
         ///     Using gRPC Bidirectional Call writes in and read from stream.
         /// </summary>
+        /// <remarks>
+        ///     As I don't have any clue on how to close a connection in gRPC, I just break the loop after "Bye" command.
+        /// </remarks>
+        /// </remarks>
         /// <param name="client"></param>
         /// <returns></returns>
         private static async Task HandleBidirectionalCall(GrpcClient client)
@@ -189,5 +198,43 @@ q for quit");
                 await call.RequestStream.WriteAsync(new RequestMessage { Message = message });
             }
         }
+
+        private static CommunicationChannel SelectCommunicationChannel()
+        {
+            Console.WriteLine(@"Press:
+u to use ""Unary Call"" 
+b to use ""Bidirectional Call""
+and any other key to quit");
+
+            var keyInfo = Console.ReadKey(true);
+            var character = keyInfo.KeyChar.ToString();
+
+            if (string.Equals("u", character, StringComparison.OrdinalIgnoreCase))
+            {
+                return CommunicationChannel.Unary;
+            }
+            if (string.Equals("b", character, StringComparison.OrdinalIgnoreCase))
+            {
+                return CommunicationChannel.Bidirectional;
+            }
+
+            return CommunicationChannel.Unknown;
+        }
+
+        private static void PrintHelp()
+        {
+            Console.WriteLine(@"Press:
+h for ""Hello"" message
+p for ""Ping"" message
+b for ""Bye"" message
+q for quit");
+        }
+    }
+
+    internal enum CommunicationChannel
+    {
+        Unary = 1,
+        Bidirectional = 2,
+        Unknown = 3
     }
 }
