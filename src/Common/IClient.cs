@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using TinCanPhone.Client.Contracts;
+using TinCanPhone.Common.Contracts;
 
-namespace TinCanPhone.Client
+namespace TinCanPhone.Common
 {
     public interface IClient
     {

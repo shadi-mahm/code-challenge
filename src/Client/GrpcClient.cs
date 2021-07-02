@@ -2,10 +2,11 @@
 using System.Threading.Tasks;
 using Grpc.Core;
 using Grpc.Net.Client;
-using TinCanPhone.Client.Contracts;
+using TinCanPhone.Common.Contracts;
 using TinCanPhone.Client.Exceptions;
 using TinCanPhone.Client.Models;
 using TinCanPhone.Protos;
+using TinCanPhone.Common;
 
 namespace TinCanPhone.Client
 {
