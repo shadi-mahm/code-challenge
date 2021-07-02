@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using TinCanPhone.Common;
 using TinCanPhone.Protos;
 using TinCanPhone.Server.Handlers;
+using TinCanPhone.Server.Tests.Helpers;
 using Xunit;
 
 namespace TinCanPhone.Server.Tests.ServiceTests
@@ -77,7 +78,7 @@ namespace TinCanPhone.Server.Tests.ServiceTests
         }
 
         public async Task<MessageHandlerOutput> Handle()
-        {   
+        {
             return await Task.FromResult(new MessageHandlerOutput(Responses.Hi)).ConfigureAwait(false);
         }
     }
