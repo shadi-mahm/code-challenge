@@ -10,4 +10,7 @@
   <ItemGroup>
     <Folder Include="Contracts\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TinCanPhone.Protos\TinCanPhone.Protos.csproj" />
+  </ItemGroup>
 </Project>

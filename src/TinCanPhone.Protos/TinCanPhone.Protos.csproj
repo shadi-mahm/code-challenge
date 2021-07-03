@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="tincan.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <PackageReference Include="Grpc.AspNetCore" Version="2.38.0" />
+	  
+	 <!--Installed Explicity beacuase we want to use last version of Dependencies.-->
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+	<PackageReference Include="Google.Protobuf" Version="3.17.3" />
+	 <!--Installed Explicity beacuase we want to use last version of Dependencies.-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="tincan.proto" />
+  </ItemGroup>
+
+</Project>

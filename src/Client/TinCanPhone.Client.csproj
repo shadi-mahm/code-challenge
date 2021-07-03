@@ -4,29 +4,15 @@
 		<TargetFramework>net5.0</TargetFramework>
 		<AssemblyVersion>1.2.0</AssemblyVersion>
 	</PropertyGroup>
-	<ItemGroup>
-		<Protobuf Include="../Protos/tincan.proto" GrpcServices="Client">
-			<Link>Protos/tincan.proto</Link>
-		</Protobuf>
-	</ItemGroup>
+
+	
 	<ItemGroup>
 		<None Remove="Models\" />
-		<None Remove="Google.Protobuf" />
-		<None Remove="Grpc.Tools" />
-		<None Remove="Grpc.Net.Client" />
 		<None Remove="Exceptions\" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Models\" />
 		<Folder Include="Exceptions\" />
-	</ItemGroup>
-	<ItemGroup>
-	  <PackageReference Include="Google.Protobuf" Version="3.17.3" />
-	  <PackageReference Include="Grpc.Tools" Version="2.38.1">
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	    <PrivateAssets>all</PrivateAssets>
-	  </PackageReference>
-	  <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Common\TinCanPhone.Common.csproj" />

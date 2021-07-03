@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCanPhone.Common", "src\Common\TinCanPhone.Common.csproj", "{6EC494FF-B045-47B2-8BE2-33DD6D35DF8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinCanPhone.Common", "src\Common\TinCanPhone.Common.csproj", "{6EC494FF-B045-47B2-8BE2-33DD6D35DF8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCanPhone.Server.Tests", "tests\Server.Tests\TinCanPhone.Server.Tests.csproj", "{2D83B2DE-DD3E-4C3E-8372-4883D4EE24DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinCanPhone.Server.Tests", "tests\Server.Tests\TinCanPhone.Server.Tests.csproj", "{2D83B2DE-DD3E-4C3E-8372-4883D4EE24DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B08AEDE1-10FD-44E9-8BBB-930AC4D99E9C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F8A9B446-8AFC-492C-9743-BD36191065B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCanPhone.Server", "src\Server\TinCanPhone.Server.csproj", "{9E96E1AB-A0C9-40AC-A137-7E18FBF71D19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinCanPhone.Server", "src\Server\TinCanPhone.Server.csproj", "{9E96E1AB-A0C9-40AC-A137-7E18FBF71D19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCanPhone.ClientRunner", "src\ClientRunner\TinCanPhone.ClientRunner.csproj", "{299C9BFD-64C8-44F9-B8D1-F137ED8433FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinCanPhone.ClientRunner", "src\ClientRunner\TinCanPhone.ClientRunner.csproj", "{299C9BFD-64C8-44F9-B8D1-F137ED8433FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCanPhone.Client", "src\Client\TinCanPhone.Client.csproj", "{8EDA792D-89FD-4CFC-BA11-F2CC6E86B25C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinCanPhone.Client", "src\Client\TinCanPhone.Client.csproj", "{8EDA792D-89FD-4CFC-BA11-F2CC6E86B25C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinCanPhone.Protos", "src\TinCanPhone.Protos\TinCanPhone.Protos.csproj", "{4BC28E4E-1823-4E9A-851A-6E3A28F10685}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,9 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6EC494FF-B045-47B2-8BE2-33DD6D35DF8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -90,6 +89,21 @@ Global
 		{8EDA792D-89FD-4CFC-BA11-F2CC6E86B25C}.Release|x64.Build.0 = Release|Any CPU
 		{8EDA792D-89FD-4CFC-BA11-F2CC6E86B25C}.Release|x86.ActiveCfg = Release|Any CPU
 		{8EDA792D-89FD-4CFC-BA11-F2CC6E86B25C}.Release|x86.Build.0 = Release|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Debug|x64.Build.0 = Debug|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Debug|x86.Build.0 = Debug|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Release|x64.ActiveCfg = Release|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Release|x64.Build.0 = Release|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Release|x86.ActiveCfg = Release|Any CPU
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6EC494FF-B045-47B2-8BE2-33DD6D35DF8E} = {B08AEDE1-10FD-44E9-8BBB-930AC4D99E9C}
@@ -97,5 +111,9 @@ Global
 		{9E96E1AB-A0C9-40AC-A137-7E18FBF71D19} = {B08AEDE1-10FD-44E9-8BBB-930AC4D99E9C}
 		{299C9BFD-64C8-44F9-B8D1-F137ED8433FA} = {B08AEDE1-10FD-44E9-8BBB-930AC4D99E9C}
 		{8EDA792D-89FD-4CFC-BA11-F2CC6E86B25C} = {B08AEDE1-10FD-44E9-8BBB-930AC4D99E9C}
+		{4BC28E4E-1823-4E9A-851A-6E3A28F10685} = {B08AEDE1-10FD-44E9-8BBB-930AC4D99E9C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C9F20A8-35C8-4EF5-8E9C-90C24835B59C}
 	EndGlobalSection
 EndGlobal
