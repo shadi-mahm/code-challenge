@@ -147,7 +147,6 @@ namespace TinCanPhone.ClientRunner
         /// <remarks>
         ///     As I don't have any clue on how to close a connection in gRPC, I just break the loop after "Bye" command.
         /// </remarks>
-        /// </remarks>
         /// <param name="client"></param>
         /// <returns></returns>
         private static async Task HandleBidirectionalCall(GrpcClient client)
